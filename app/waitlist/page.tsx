@@ -191,7 +191,7 @@ export default function EnhancedWaitlistSignup() {
       <div className="relative min-h-screen flex flex-col">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg"
+            src="/background.jpg"
             alt="House party atmosphere"
             layout="fill"
             objectFit="cover"

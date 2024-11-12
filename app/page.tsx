@@ -4,8 +4,10 @@ import { ArrowRight, Users, Sparkles, MessageSquare, Home } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function HomePage() {
+  const router = useRouter()
   const [isVisible, setIsVisible] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -37,6 +39,10 @@ export default function HomePage() {
     }
   ]
 
+  const handleJoinClick = () => {
+    router.push('/waitlist')
+  }
+
   if (isDesktop) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -53,7 +59,7 @@ export default function HomePage() {
       <div className="relative min-h-screen flex flex-col">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg"
+            src="/background.jpg"
             alt="House party atmosphere"
             width={1920}
             height={1080}
@@ -108,7 +114,7 @@ export default function HomePage() {
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="w-8 h-8 rounded-full bg-gray-600 border-2 border-black ring-2 ring-red-500 transition-all duration-300 hover:scale-110">
                     <Image
-                      src={`/placeholder.svg?text`}
+                      src={`/face-2.jpg`}
                       alt={``}
                       width={32}
                       height={32}
@@ -123,7 +129,10 @@ export default function HomePage() {
             </div>
             
             <div className="space-y-4">
-              <Button className="w-full bg-red-500 hover:bg-red-600 text-white rounded-full h-12 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30">
+              <Button 
+                  onClick={handleJoinClick}
+                className="w-full bg-red-500 hover:bg-red-600 text-white rounded-full h-12 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
+              >
                 Join Social Hour
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
